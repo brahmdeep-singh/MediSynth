@@ -1,0 +1,145 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="V-CWReSMRVjA0rz_Zju4">
+    <mxGraphModel dx="1798" dy="1287" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="700" pageHeight="1300" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="p2h1" parent="1" style="text;html=1;align=center;fontStyle=1;fontSize=14;" value="Admin" vertex="1">
+          <mxGeometry height="25" width="220" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="p2h2" parent="1" style="text;html=1;align=center;fontStyle=1;fontSize=14;" value="Synthetix engine" vertex="1">
+          <mxGeometry height="25" width="240" x="220" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="p2h3" parent="1" style="text;html=1;align=center;fontStyle=1;fontSize=14;" value="Researcher" vertex="1">
+          <mxGeometry height="25" width="200" x="460" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="p2dv1" edge="1" parent="1" style="endArrow=none;html=1;dashed=1;strokeColor=#999999;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="220" y="40" as="sourcePoint" />
+            <mxPoint x="220" y="1280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p2dv2" edge="1" parent="1" style="endArrow=none;html=1;dashed=1;strokeColor=#999999;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="460" y="40" as="sourcePoint" />
+            <mxPoint x="460" y="1280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p2start" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
+          <mxGeometry height="20" width="20" x="100" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sel" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Select / prepare healthcare dataset" vertex="1">
+          <mxGeometry height="60" width="180" x="20" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="rmid" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Remove / protect direct patient identifiers" vertex="1">
+          <mxGeometry height="60" width="180" x="20" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="s2syn" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Send dataset to Synthetix" vertex="1">
+          <mxGeometry height="60" width="200" x="240" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="analyze" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Synthetix analyzes data patterns" vertex="1">
+          <mxGeometry height="60" width="200" x="240" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="gensyn" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Synthetix generates synthetic dataset" vertex="1">
+          <mxGeometry height="60" width="200" x="240" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="eval" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Evaluate synthetic dataset" vertex="1">
+          <mxGeometry height="60" width="200" x="240" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="d4" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Meets quality and privacy requirements?" vertex="1">
+          <mxGeometry height="100" width="220" x="230" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="ready" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Synthetic dataset ready" vertex="1">
+          <mxGeometry height="60" width="200" x="240" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="modif" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="Modify generation parameters" vertex="1">
+          <mxGeometry height="60" width="200" x="240" y="900" as="geometry" />
+        </mxCell>
+        <mxCell id="regen" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="Regenerate synthetic dataset" vertex="1">
+          <mxGeometry height="60" width="200" x="240" y="980" as="geometry" />
+        </mxCell>
+        <mxCell id="reqacc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="Researcher requests access" vertex="1">
+          <mxGeometry height="60" width="160" x="480" y="800" as="geometry" />
+        </mxCell>
+        <mxCell id="rej" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="Access rejected" vertex="1">
+          <mxGeometry height="60" width="160" x="480" y="1080" as="geometry" />
+        </mxCell>
+        <mxCell id="end2a" parent="1" style="ellipse;shape=doubleEllipse;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
+          <mxGeometry height="34" width="34" x="543" y="1170" as="geometry" />
+        </mxCell>
+        <mxCell id="adrev" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Admin reviews access request" vertex="1">
+          <mxGeometry height="60" width="180" x="20" y="880" as="geometry" />
+        </mxCell>
+        <mxCell id="d5" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Access approved?" vertex="1">
+          <mxGeometry height="100" width="200" x="10" y="960" as="geometry" />
+        </mxCell>
+        <mxCell id="prov" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Provide synthetic dataset" vertex="1">
+          <mxGeometry height="60" width="180" x="20" y="1090" as="geometry" />
+        </mxCell>
+        <mxCell id="audit" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Record audit log" vertex="1">
+          <mxGeometry height="60" width="180" x="20" y="1170" as="geometry" />
+        </mxCell>
+        <mxCell id="end2b" parent="1" style="ellipse;shape=doubleEllipse;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
+          <mxGeometry height="34" width="34" x="93" y="1260" as="geometry" />
+        </mxCell>
+        <mxCell id="pe1" edge="1" parent="1" source="p2start" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;" target="sel">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe2" edge="1" parent="1" source="sel" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;" target="rmid">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe3" edge="1" parent="1" source="rmid" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;" target="s2syn">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe4" edge="1" parent="1" source="s2syn" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;" target="analyze">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe5" edge="1" parent="1" source="analyze" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;" target="gensyn">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe6" edge="1" parent="1" source="gensyn" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;" target="eval">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe7" edge="1" parent="1" source="eval" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;" target="d4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe8" edge="1" parent="1" source="d4" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;fontStyle=1;" target="ready" value="[Yes]">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe9" edge="1" parent="1" source="d4" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;fontStyle=1;" target="modif" value="[No]">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe10" edge="1" parent="1" source="modif" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;" target="regen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe11" edge="1" parent="1" source="regen" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;dashed=1;" target="eval">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe12" edge="1" parent="1" source="ready" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;" target="reqacc">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe13" edge="1" parent="1" source="reqacc" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;" target="adrev">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe14" edge="1" parent="1" source="adrev" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;" target="d5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe15" edge="1" parent="1" source="d5" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;fontStyle=1;" target="rej" value="[Rejected]">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe16" edge="1" parent="1" source="rej" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;" target="end2a">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe17" edge="1" parent="1" source="d5" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;fontStyle=1;" target="prov" value="[Approved]">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe18" edge="1" parent="1" source="prov" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;" target="audit">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pe19" edge="1" parent="1" source="audit" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=classic;" target="end2b">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
