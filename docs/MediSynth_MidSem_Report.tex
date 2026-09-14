@@ -1,0 +1,137 @@
+\documentclass[12pt,a4paper]{report}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{setspace}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    citecolor=black
+}
+
+\titleformat{\chapter}[hang]{\normalfont\huge\bfseries}{Chapter \thechapter:}{1em}{}
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+\setstretch{1.15}
+
+\begin{document}
+
+% ---------------- Title Page ----------------
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+
+    {\Large \textbf{UCS503 -- Software Engineering}}\\[0.3cm]
+    {\Large \textbf{MediSynth}}\\[0.3cm]
+    {\large A Hospital Management System with a Privacy-Preserving\\
+    Synthetic Patient Data Engine (SynthetiX)}\\[2cm]
+
+    {\large \textbf{Submitted By:}}\\[0.5cm]
+
+    1024030789 -- Aryan Sharma\\[0.3cm]
+    1024030792 -- Brahmdeep Singh Khanuja\\[0.3cm]
+    1024030793 -- Keerat Singh Brar\\[1cm]
+
+    \textbf{Group --} 3C55\\[0.3cm]
+    BE Third Year, COE\\[0.3cm]
+    \textbf{Submitted To -- } Ms. Nisha Thakur\\[2cm]
+
+    \vfill
+
+    {\large \textbf{THAPAR INSTITUTE}}\\
+    {\normalsize OF ENGINEERING \& TECHNOLOGY}\\
+    {\small (Deemed to be University)}
+
+    \vspace*{1cm}
+\end{titlepage}
+
+% ---------------- Table of Contents ----------------
+\tableofcontents
+
+% ---------------- Chapter 1 ----------------
+\chapter{Introduction}
+
+\section{Background and Context}
+
+Hospital software teams increasingly need realistic patient data to build, test, and demonstrate new systems before they can be deployed. This need extends beyond production hospitals to academic and research settings, where teams frequently have no legitimate way to access real patient records at all. Real patient data is protected health information under regulations such as HIPAA (United States) and India's Digital Personal Data Protection (DPDP) Act, and cannot legally or ethically be shared with developers, students, or third-party testers without extensive data-use agreements that are impractical within a single academic semester.
+
+MediSynth addresses this gap by pairing a fully functional hospital management system (HMS) with Synthetix, a synthetic patient data engine. Rather than relying on real records or simple field-masking, Synthetix generates entirely new, artificial patient data that preserves the statistical patterns found in real healthcare data --- age-diagnosis correlations, prescription frequencies, appointment volumes --- without representing any real individual. This lets our team, and potentially others in a similar position, build and validate a realistic hospital system without ever touching protected data.
+
+\subsection{Problem Statement}
+
+Student and early-stage development teams building healthcare software face four related obstacles:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Legal restriction:} real hospital records fall under HIPAA and the DPDP Act; hospitals cannot hand them to student developers or third-party testers without extensive data-use agreements that are impractical within a single semester.
+    \item \textbf{Re-identification risk:} simple anonymization (removing names or ID numbers) is frequently reversible --- prior research has shown that a large majority of a population can be uniquely re-identified from just three seemingly harmless fields such as date of birth, gender, and postal code. This makes basic field-masking an unreliable substitute for genuine privacy protection.
+    \item \textbf{Unrealistic test data:} teams that avoid real data often fall back on small, hand-typed mock records that do not reflect real clinical patterns, producing systems that are never properly stress-tested before deployment.
+    \item \textbf{Fragmented development:} without a single, realistic, shared dataset, each part of a hospital system --- backend, frontend, mobile, analytics --- tends to invent its own inconsistent mock data, causing integration rework later in the project.
+\end{itemize}
+
+MediSynth's core engineering problem is therefore twofold: build a complete, role-based hospital management system, and build a data engine capable of seeding that system with statistically realistic, privacy-safe data from day one of development.
+
+\section{Project Objectives}
+
+\begin{enumerate}[leftmargin=*]
+    \item Deliver a functional, role-based Hospital Management System covering patient registration, appointment booking, doctor consultation, medical records, prescriptions, lab test workflows, and billing, built and integrated across four coordinated lanes (backend, frontend, mobile, data engine) within the 10-week project timeline.
+    \item Design and implement Synthetix, a statistical synthetic-data generation engine that produces a patient dataset (target size: 10,000 records) with zero real patient records, validated by comparing key summary statistics of the generated data against reference public healthcare distributions before each release.
+    \item Establish a working CI/CD pipeline that automatically builds and tests all four lanes on every change and deploys to a staging environment, so that a working, seeded, role-based demo of the system is available by the mid-semester evaluation.
+\end{enumerate}
+
+These objectives were chosen to be measurable at this stage of the project: Objective 1 and 3 are directly demonstrable in the current submission, while full validation of Objective 2's statistical fidelity target will be reported in the final evaluation once the complete synthetic dataset has been generated and benchmarked.
+
+% ---------------- Chapter 2 ----------------
+\chapter{Methodology and Design}
+
+\section{System Architecture}
+
+\subsection{High-Level Design}
+
+MediSynth is built across four coordinated lanes that share a common PostgreSQL schema:
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Backend (Java with Spring Boot):} exposes REST APIs for authentication, patient and appointment management, medical records, prescriptions, and billing. Implements JSON Web Token (JWT) based authentication and role-based access control (RBAC) so that admin, doctor, lab technician, pharmacist, and patient roles each see only the actions relevant to them. All sensitive actions (record updates, prescription changes, dataset access) are written to an audit log.
+    \item \textbf{Frontend (React):} the primary web interface used by hospital staff --- admin dashboards, doctor consultation views, and pharmacy/lab workflows.
+    \item \textbf{Data engine (Synthetix, Python):} decoupled from the backend so it can be run independently to (re)generate a synthetic dataset at any time. It is the only component that ever writes patient-like data into the system during development, since no real patient data is available to the team.
+\end{itemize}
+
+The database uses a 13-table relational schema with multi-tenant isolation, so that in principle multiple hospitals could use a single deployment without any cross-visibility of each other's data --- a design choice made early to keep the schema realistic even though the current deployment target is a single institution.
+
+\subsection{Technical Stack}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Framework/Language:} Java with Spring Boot (backend API); React (web frontend); Python (Synthetix data engine).
+    \item \textbf{Database:} PostgreSQL, accessed via a parameterised query layer to prevent SQL injection.
+    \item \textbf{Tools:} Git/GitHub for version control; GitHub Actions for CI/CD; Postman for API testing; draw.io for UML and data-flow design documentation.
+    \item \textbf{Libraries:} React.js, Axios, and JavaScript for the frontend; Java and Spring Boot for the backend, with Spring Security, JWT, and BCrypt for authentication; and Python with pandas, NumPy, and SciPy for synthetic data generation.
+\end{itemize}
+
+\section{Implementation Details}
+
+\subsection{Module 1: Core Functionality}
+
+This module covers the functionality completed and demonstrable at the time of this submission.
+
+\textbf{Authentication and access control.} All API routes are protected by JWT-based authentication issued at login. A role-based middleware layer checks each request against the caller's role (admin, doctor, lab technician, pharmacist, or patient) before allowing access, and passwords are stored using bcrypt hashing rather than in plain text.
+
+\textbf{Core relational schema.} The 13-table PostgreSQL schema currently covers patients, staff (with role), appointments, medical records, prescriptions, and billing, with foreign-key relationships enforcing that, for example, a medical record cannot exist without an associated patient, and a prescription cannot exist without an associated medical record.
+
+\textbf{Patient and appointment workflows.} CRUD APIs are implemented for patient registration and login, doctor search and selection, and appointment booking with conflict checking against existing bookings. A corresponding set of screens exists in the React frontend for staff-side booking management.
+
+\textbf{Doctor consultation and medical records.} Doctors can view a patient's medical history and update it with consultation notes through a dedicated API and UI flow, forming the foundation that the lab-test and prescription workflows (planned for Module 2) will build on.
+
+\textbf{Synthetix v1: rule-based synthetic data generation.} The first version of the Synthetix pipeline is implemented in Python as a CSV-to-CSV generator. It profiles publicly available healthcare statistics (age-band distributions, disease prevalence by age group) to define sampling distributions, then generates synthetic patient records from those distributions rather than from any real record. This first-pass dataset is used to seed the PostgreSQL database so that every lane of the project has a consistent, realistic dataset to build and test against, instead of each lane inventing its own inconsistent mock data.
+
+\textbf{Audit logging.} Sensitive actions --- record creation, updates to medical records or prescriptions --- are written to an audit log table, laying the groundwork for the fuller data-governance features planned for later modules.
+
+Together, these pieces form a working, seeded, role-based slice of the system: a user can register, log in under the correct role, book or manage an appointment, and view or update a medical record, all against data that Synthetix generated rather than any real patient's information.
+
+\end{document}
