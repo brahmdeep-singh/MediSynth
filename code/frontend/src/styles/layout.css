@@ -1,0 +1,158 @@
+@import "./variables.css";
+
+.app-shell {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  min-height: 100vh;
+  transition: grid-template-columns 0.18s ease;
+}
+.app-shell.is-collapsed {
+  grid-template-columns: var(--sidebar-w-collapsed) 1fr;
+}
+
+/* ---- Sidebar ---- */
+.sidebar {
+  background: var(--paper);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-5) var(--sp-4);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.sidebar-brand-mark {
+  width: 32px; height: 32px; border-radius: var(--radius-sm);
+  background: var(--teal-600); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; flex-shrink: 0;
+}
+.sidebar-brand-name { font-weight: 700; font-size: var(--fs-md); color: var(--ink); }
+.sidebar-brand-role { font-size: var(--fs-xs); color: var(--text-secondary); }
+
+.sidebar-nav {
+  flex: 1;
+  padding: var(--sp-3) var(--sp-2);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-3);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.sidebar-link:hover { background: var(--slate-100); text-decoration: none; color: var(--ink); }
+.sidebar-link.active { background: var(--teal-100); color: var(--teal-700); }
+.sidebar-link svg { flex-shrink: 0; width: 18px; height: 18px; }
+
+.sidebar-collapse-btn {
+  margin: var(--sp-2);
+  border: 1px solid var(--border);
+  background: transparent;
+  border-radius: var(--radius-sm);
+  padding: var(--sp-2);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.sidebar-collapse-btn:hover { background: var(--slate-100); }
+
+.app-shell.is-collapsed .sidebar-brand-name,
+.app-shell.is-collapsed .sidebar-brand-role,
+.app-shell.is-collapsed .sidebar-link span { display: none; }
+.app-shell.is-collapsed .sidebar-link { justify-content: center; }
+
+/* ---- Topbar ---- */
+.topbar {
+  height: var(--topbar-h);
+  border-bottom: 1px solid var(--border);
+  background: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--sp-5);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.topbar-search {
+  flex: 1;
+  max-width: 360px;
+}
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+}
+.topbar-icon-btn {
+  position: relative;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: var(--sp-2);
+  border-radius: var(--radius-sm);
+  display: flex;
+}
+.topbar-icon-btn:hover { background: var(--slate-100); color: var(--ink); }
+.topbar-badge {
+  position: absolute; top: 2px; right: 2px;
+  background: var(--danger); color: white;
+  font-size: 10px; font-weight: 700;
+  min-width: 16px; height: 16px; border-radius: 999px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 3px;
+}
+.topbar-user {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  cursor: pointer;
+  padding: var(--sp-1) var(--sp-2);
+  border-radius: var(--radius-sm);
+}
+.topbar-user:hover { background: var(--slate-100); }
+.topbar-user-name { font-size: var(--fs-sm); font-weight: 600; line-height: 1.1; }
+.topbar-user-role { font-size: var(--fs-xs); color: var(--text-secondary); }
+
+.hamburger-btn { display: none; background: none; border: none; color: var(--ink); cursor: pointer; }
+
+.main-content { background: var(--background); min-height: calc(100vh - var(--topbar-h)); }
+
+/* ---- Mobile drawer ---- */
+@media (max-width: 900px) {
+  .app-shell, .app-shell.is-collapsed { grid-template-columns: 1fr; }
+  .sidebar {
+    position: fixed;
+    left: -280px;
+    top: 0;
+    width: 260px;
+    z-index: 50;
+    transition: left 0.2s ease;
+    box-shadow: var(--shadow-float);
+  }
+  .sidebar.mobile-open { left: 0; }
+  .sidebar-brand-name, .sidebar-brand-role, .sidebar-link span { display: inline !important; }
+  .sidebar-link { justify-content: flex-start !important; }
+  .sidebar-collapse-btn { display: none; }
+  .hamburger-btn { display: flex; }
+  .drawer-backdrop {
+    position: fixed; inset: 0; background: rgba(20,36,32,0.35); z-index: 40;
+  }
+  .topbar-search { display: none; }
+}
