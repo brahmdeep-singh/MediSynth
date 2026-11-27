@@ -1,0 +1,18 @@
+# Optional local PostgreSQL. Reads DB_PASSWORD from your shell or .env (no password is stored here).
+# Creates the "medisynth" database; docker/init-test-db.sql also creates "medisynth_test" for the tests.
+services:
+  postgres:
+    image: postgres:16
+    container_name: medisynth-postgres
+    environment:
+      POSTGRES_DB: medisynth
+      POSTGRES_USER: ${DB_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env or your shell}
+    ports:
+      - "5432:5432"
+    volumes:
+      - medisynth-pgdata:/var/lib/postgresql/data
+      - ./docker/init-test-db.sql:/docker-entrypoint-initdb.d/init-test-db.sql:ro
+
+volumes:
+  medisynth-pgdata:
