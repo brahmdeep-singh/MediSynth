@@ -759,6 +759,62 @@ rejected because 93.5\% (needed: 95\%) are in groups of five or more and
 This is the intended behaviour: a high average score cannot hide a privacy
 failure, and the administrator is told to regenerate with more records.
 
+\section{Application Screenshots}
+\label{sec:screens}
+
+The screenshots below were captured from the running application on a local machine and follow one complete path through the system: a doctor registers, waits for approval, is approved by the administrator, and then works with a patient's appointment.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth,height=0.40\textheight,keepaspectratio]{screenshots/register.jpg}
+  \caption{Registration form for a doctor, with professional details (account needs admin approval)}
+  \label{fig:shot-register}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth,height=0.40\textheight,keepaspectratio]{screenshots/status.jpg}
+  \caption{Application status page: the doctor sees ``Awaiting approval and cannot log in yet}
+  \label{fig:shot-status}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth,height=0.40\textheight,keepaspectratio]{screenshots/admin_requests.jpg}
+  \caption{Administrator: registration requests list with Details, Approve and Reject actions}
+  \label{fig:shot-requests}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth,height=0.40\textheight,keepaspectratio]{screenshots/admin_dashboard.jpg}
+  \caption{Administrator dashboard: one Synthetix dataset ready for researchers, and recent audit activity (dataset generated with 5,000 records, evaluated with score 0.974 and result READY, then previewed)}
+  \label{fig:shot-admin}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth,height=0.40\textheight,keepaspectratio]{screenshots/patient_dashboard.jpg}
+  \caption{Patient dashboard: the booked appointment with the approved doctor is shown as pending}
+  \label{fig:shot-patient}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth,height=0.40\textheight,keepaspectratio]{screenshots/doctor_dashboard.jpg}
+  \caption{Doctor dashboard after approval: the same appointment appears in today's queue as confirmed}
+  \label{fig:shot-doctor}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.95\textwidth,height=0.40\textheight,keepaspectratio]{screenshots/consultation.jpg}
+  \caption{Consultation screen: the doctor records a diagnosis and notes and orders a lab test}
+  \label{fig:shot-consult}
+\end{figure}
+
+Figures~\ref{fig:shot-register} to~\ref{fig:shot-requests} show the approval workflow, Figure~\ref{fig:shot-admin} shows the Synthetix result recorded in the audit log, and Figures~\ref{fig:shot-patient} to~\ref{fig:shot-consult} show the appointment and consultation flow.
+
 \section{Analysis}
 
 \begin{itemize}
