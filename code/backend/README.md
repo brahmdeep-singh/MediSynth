@@ -1,5 +1,4 @@
 # MediSynth backend
-
 Spring Boot 4.1.1 · Java 21 · PostgreSQL · Flyway · Spring Security (stateless JWT) · Maven.
 Structure and conventions follow the CRUMB reference project, see [docs/CRUMB_STRUCTURE.md](docs/CRUMB_STRUCTURE.md).
 
